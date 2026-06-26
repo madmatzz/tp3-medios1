@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Limpieza Profunda</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,34 +10,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: black;
-      overflow-x: hidden; /* Previene scroll horizontal */
+      width: 100%;
+      overflow-x: hidden; /* Previene scroll horizontal indeseado en móviles */
     }
     
-    /* Contenedor principal que envuelve al diseño para centrarlo y ajustar su altura */
     #figma-wrapper {
       width: 100%;
-      height: 7750px;
-      display: flex;
-      justify-content: center;
-      background: black;
-      overflow: hidden;
-    }
-
-    /* El diseño original de Figma */
-    #figma-container {
-      width: 1440px;
-      height: 7750px;
       position: relative;
       background: black;
       overflow: hidden;
-      transform-origin: top center; /* Escala desde el centro superior */
     }
 
-    /* Animación del cursor parpadeante */
+    #figma-container {
+      width: 1440px;
+      height: 7750px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: black;
+      transform-origin: top left; /* Vital para que el escalado sea perfecto hacia la derecha y abajo */
+    }
+
     .cursor::after {
       content: '|';
       animation: blink 1s step-end infinite;
@@ -54,7 +51,6 @@
   <div id="figma-wrapper">
     <div id="figma-container">
       
-      <!-- Las imágenes de la escena -->
       <div style="width: 712px; height: 388px; left: 366px; top: 799px; position: absolute; overflow: hidden">
         <img style="width: 779px; height: 446px; left: -34px; top: -4px; position: absolute; border: 3px black solid" src="principio fabrica.gif" alt="Principio Fabrica" />
       </div>
@@ -86,7 +82,6 @@
         <img style="width: 358px; height: 482px; left: -15px; top: -10px; position: absolute" src="final.gif" alt="Final" />
       </div>
       
-      <!-- Título con efecto de máquina de escribir -->
       <div style="width: 1283px; height: 130px; left: 78px; top: 257px; position: absolute; text-align: center; color: white; font-size: 64px; font-family: 'Kay Pho Du', sans-serif; font-weight: 700; word-wrap: break-word">
         <span id="typewriter-text" class="cursor"></span>
       </div>
@@ -96,35 +91,46 @@
 
   <script>
     // ----------------------------------------------------
-    // LÓGICA DE ESCALADO RESPONSIVO (MOBILE)
+    // LÓGICA DE ESCALADO RESPONSIVO MEJORADA PARA MOBILE
     // ----------------------------------------------------
     function scaleLayout() {
       const wrapper = document.getElementById('figma-wrapper');
       const container = document.getElementById('figma-container');
       
-      // Dimensiones originales exportadas de Figma
       const baseWidth = 1440;
       const baseHeight = 7750;
       
-      // Calcular qué porcentaje de la pantalla ocupa nuestro diseño de 1440px
-      // Si la pantalla es más grande que 1440, no lo escalamos más (scale = 1)
-      const scale = Math.min(window.innerWidth / baseWidth, 1);
+      const currentWidth = window.innerWidth;
+      let scale = currentWidth / baseWidth;
       
-      // Aplicar el zoom/escalado al contenedor visual
-      container.style.transform = `scale(${scale})`;
+      if (scale >= 1) {
+        // En escritorio (más de 1440px), no escalamos, pero lo centramos
+        scale = 1;
+        container.style.transform = `scale(1)`;
+        // Calcular margen izquierdo para centrar
+        const leftMargin = (currentWidth - baseWidth) / 2;
+        container.style.left = `${leftMargin}px`;
+      } else {
+        // En móvil/tablet, aplicamos la escala desde la esquina superior izquierda
+        container.style.transform = `scale(${scale})`;
+        container.style.left = '0px';
+      }
       
-      // Ajustar la altura real de la página para no dejar espacios en blanco enormes abajo
+      // Ajustamos el alto del wrapper para que la página termine justo donde debe
       wrapper.style.height = `${baseHeight * scale}px`;
     }
 
-    // Escalar al cargar la página y cada vez que se gira o cambia el tamaño de la pantalla
     window.addEventListener('resize', scaleLayout);
-    window.addEventListener('orientationchange', scaleLayout);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(scaleLayout, 100); // Pequeño retraso al girar para que el navegador actualice width
+    });
+    
+    // Ejecutar al cargar la página y justo después de unos milisegundos para evitar errores de renderizado en iOS
     scaleLayout();
-
+    setTimeout(scaleLayout, 50);
 
     // ----------------------------------------------------
-    // LÓGICA DE LA MÁQUINA DE ESCRIBIR
+    // MÁQUINA DE ESCRIBIR
     // ----------------------------------------------------
     const textElement = document.getElementById("typewriter-text");
     const text = "#Operación M.O.P.A";
