@@ -48,7 +48,7 @@
 <body>
   
   <!-- Reproductor oculto de YouTube -->
-  <div id="youtube-audio" style="position: absolute; width: 10px; height: 10px; opacity: 0; pointer-events: none; z-index: -1;"></div>
+  <div id="youtube-audio" style="position: absolute; width: 50px; height: 50px; opacity: 0.01; pointer-events: none; z-index: -1; left: 0; top: 0;"></div>
 
   <div id="figma-wrapper">
     <div id="figma-container">
@@ -116,14 +116,15 @@
     var player;
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('youtube-audio', {
-        height: '10',
-        width: '10',
+        height: '50',
+        width: '50',
         videoId: 'LhqUpcVHFAI',
         playerVars: {
           'autoplay': 1,
           'loop': 1,
           'playlist': 'LhqUpcVHFAI',
-          'controls': 0
+          'controls': 0,
+          'playsinline': 1
         },
         events: {
           'onReady': onPlayerReady
