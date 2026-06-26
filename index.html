@@ -1,76 +1,51 @@
-import limpiando1 from "./limpiando-1.png";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpieza Profunda</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'kay-pho-du': ['"Kay Pho Du"', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-black">
+  <main class="bg-black w-full min-w-[1440px] min-h-[7750px] relative overflow-x-auto">
+    <h1 class="absolute top-[257px] left-[calc(50.00%_-_642px)] w-[1283px] font-kay-pho-du font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+      <span class="font-bold">brillo</span>
+      <span class="font-kay-pho-du"> profundo</span>
+    </h1>
 
-const sceneImages = [
-  {
-    id: "factory",
-    className:
-      "absolute top-[570px] left-[calc(50.00%_-_390px)] w-[779px] h-[425px] bg-[url(/principio-fabrica-1.png)] bg-[100%_100%]",
-  },
-  {
-    id: "ear",
-    className:
-      "absolute top-[1676px] left-48 w-[225px] h-[220px] bg-[url(/oreja-1.png)] bg-[100%_100%]",
-  },
-  {
-    id: "hand",
-    className:
-      "absolute top-[1753px] left-[480px] w-[492px] h-[545px] bg-[url(/mano-1.png)] bg-[100%_100%]",
-  },
-  {
-    id: "eye",
-    className:
-      "absolute top-[2068px] left-[1022px] w-[227px] h-[333px] bg-[url(/ojo-1.png)] bg-[100%_100%]",
-  },
-  {
-    id: "conversation",
-    className:
-      "absolute top-[2911px] left-[330px] w-[776px] h-[589px] bg-[url(/charla-corregido-1.png)] bg-cover bg-[50%_50%]",
-  },
-  {
-    id: "kidnap",
-    className:
-      "absolute top-[3994px] left-[calc(50.00%_-_387px)] w-[766px] h-[573px] bg-[url(/secuestr0-1.png)] bg-cover bg-[50%_50%]",
-  },
-  {
-    id: "bucket",
-    className:
-      "absolute top-[5086px] left-[177px] w-64 h-[317px] bg-[url(/balde-1.png)] bg-[100%_100%]",
-  },
-  {
-    id: "car",
-    className:
-      "absolute top-[5922px] left-80 w-[779px] h-[465px] bg-[url(/gif-auto-1.png)] bg-cover bg-[50%_50%]",
-  },
-  {
-    id: "final",
-    className:
-      "absolute top-[6718px] left-[calc(50.00%_-_241px)] w-[464px] h-[621px] bg-[url(/final-1.png)] bg-[100%_100%]",
-  },
-];
+    <div aria-hidden="true" class="absolute top-[570px] left-[calc(50.00%_-_390px)] w-[779px] h-[425px] bg-[100%_100%]" style="background-image: url('principio%20fabrica.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[1676px] left-48 w-[225px] h-[220px] bg-[100%_100%]" style="background-image: url('oreja.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[1753px] left-[480px] w-[492px] h-[545px] bg-[100%_100%]" style="background-image: url('mano.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[2068px] left-[1022px] w-[227px] h-[333px] bg-[100%_100%]" style="background-image: url('ojo.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[2911px] left-[330px] w-[776px] h-[589px] bg-cover bg-[50%_50%]" style="background-image: url('charla%20corregido.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[3994px] left-[calc(50.00%_-_387px)] w-[766px] h-[573px] bg-cover bg-[50%_50%]" style="background-image: url('secuestr0.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[5086px] left-[177px] w-64 h-[317px] bg-[100%_100%]" style="background-image: url('balde.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[5922px] left-80 w-[779px] h-[465px] bg-cover bg-[50%_50%]" style="background-image: url('Gif%20Auto.gif');"></div>
+    <div aria-hidden="true" class="absolute top-[6718px] left-[calc(50.00%_-_241px)] w-[464px] h-[621px] bg-[100%_100%]" style="background-image: url('final.gif');"></div>
 
-export const Desktop = (): JSX.Element => {
-  return (
-    <main className="bg-black w-full min-w-[1440px] min-h-[7750px] relative overflow-x-auto">
-      <h1 className="absolute top-[257px] left-[calc(50.00%_-_642px)] w-[1283px] [font-family:'Kay_Pho_Du-Bold',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
-        <span className="font-bold">brillo</span>
-        <span className="[font-family:'Kay_Pho_Du-Regular',Helvetica]">
-          {" "}
-          profundo
-        </span>
-      </h1>
-      {sceneImages.map((image) => (
-        <div key={image.id} aria-hidden="true" className={image.className} />
-      ))}
-
-      <figure className="absolute top-[1087px] left-[187px] w-[1070px] h-[456px] flex justify-center m-0">
-        <img
-          className="mt-[58px] w-[785px] h-[339px] ml-[-3px] aspect-[2.34] object-cover"
-          alt="Persona limpiando en un espacio interior"
-          src={limpiando1}
-        />
-      </figure>
-    </main>
-  );
-};
-
-export default Desktop;
+    <figure class="absolute top-[1087px] left-[187px] w-[1070px] h-[456px] flex justify-center m-0">
+      <img
+        class="mt-[58px] w-[785px] h-[339px] ml-[-3px] aspect-[2.34] object-cover"
+        alt="Persona limpiando en un espacio interior"
+        src="Limpiando.gif"
+      />
+    </figure>
+  </main>
+</body>
+</html>
