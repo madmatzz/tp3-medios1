@@ -5,47 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Limpieza Profunda</title>
   
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kay+Pho+Du:wght@400;700&display=swap" rel="stylesheet">
   
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'kay-pho-du': ['"Kay Pho Du"', 'Helvetica', 'sans-serif'],
-          }
-        }
-      }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      /* Centrar el contenido horizontalmente si la pantalla es más grande que 1440px */
+      display: flex;
+      justify-content: center;
     }
-  </script>
+  </style>
 </head>
-<body class="bg-black">
-  <main class="bg-black w-full min-w-[1440px] min-h-[7750px] relative overflow-x-auto">
-    <h1 class="absolute top-[257px] left-[calc(50.00%_-_642px)] w-[1283px] font-kay-pho-du font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
-      <span class="font-bold">brillo</span>
-      <span class="font-kay-pho-du"> profundo</span>
-    </h1>
-
-    <div aria-hidden="true" class="absolute top-[570px] left-[calc(50.00%_-_390px)] w-[779px] h-[425px] bg-[100%_100%]" style="background-image: url('principio%20fabrica.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[1676px] left-48 w-[225px] h-[220px] bg-[100%_100%]" style="background-image: url('oreja.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[1753px] left-[480px] w-[492px] h-[545px] bg-[100%_100%]" style="background-image: url('mano.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[2068px] left-[1022px] w-[227px] h-[333px] bg-[100%_100%]" style="background-image: url('ojo.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[2911px] left-[330px] w-[776px] h-[589px] bg-cover bg-[50%_50%]" style="background-image: url('charla%20corregido.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[3994px] left-[calc(50.00%_-_387px)] w-[766px] h-[573px] bg-cover bg-[50%_50%]" style="background-image: url('secuestr0.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[5086px] left-[177px] w-64 h-[317px] bg-[100%_100%]" style="background-image: url('balde.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[5922px] left-80 w-[779px] h-[465px] bg-cover bg-[50%_50%]" style="background-image: url('Gif%20Auto.gif');"></div>
-    <div aria-hidden="true" class="absolute top-[6718px] left-[calc(50.00%_-_241px)] w-[464px] h-[621px] bg-[100%_100%]" style="background-image: url('final.gif');"></div>
-
-    <figure class="absolute top-[1087px] left-[187px] w-[1070px] h-[456px] flex justify-center m-0">
-      <img
-        class="mt-[58px] w-[785px] h-[339px] ml-[-3px] aspect-[2.34] object-cover"
-        alt="Persona limpiando en un espacio interior"
-        src="Limpiando.gif"
-      />
-    </figure>
-  </main>
+<body>
+  <div style="width: 1440px; height: 7750px; position: relative; background: black; overflow: hidden">
+    <div style="width: 779px; height: 425px; left: 330px; top: 570px; position: absolute; overflow: hidden">
+      <img style="width: 779px; height: 446px; left: 0px; top: -4px; position: absolute; border: 3px black solid" src="principio fabrica.gif" alt="Principio Fabrica" />
+    </div>
+    <div style="width: 1070px; height: 456px; left: 187px; top: 1087px; position: absolute; overflow: hidden">
+      <img style="width: 779px; height: 333px; left: 144px; top: 61px; position: absolute; outline: 3px black solid" src="Limpiando.gif" alt="Limpiando" />
+    </div>
+    <div style="width: 225px; height: 220px; left: 192px; top: 1676px; position: absolute; overflow: hidden">
+      <img style="width: 234px; height: 231px; left: -5px; top: -6px; position: absolute; border: 3px black solid" src="oreja.gif" alt="Oreja" />
+    </div>
+    <div style="width: 492px; height: 545px; left: 480px; top: 1753px; position: absolute; overflow: hidden">
+      <img style="width: 502px; height: 557px; left: -6px; top: -7px; position: absolute; border: 3px black solid" src="mano.gif" alt="Mano" />
+    </div>
+    <div style="width: 227px; height: 333px; left: 1022px; top: 2068px; position: absolute; overflow: hidden">
+      <img style="width: 237px; height: 343px; left: -5px; top: -5px; position: absolute; border: 3px black solid" src="ojo.gif" alt="Ojo" />
+    </div>
+    <div style="width: 776px; height: 589px; left: 330px; top: 2911px; position: absolute; overflow: hidden">
+      <img style="width: 790px; height: 637px; left: -8px; top: -25px; position: absolute" src="charla corregido.gif" alt="Charla" />
+    </div>
+    <div style="width: 766px; height: 573px; left: 333px; top: 3994px; position: absolute; overflow: hidden">
+      <img style="width: 779px; height: 584px; left: -6px; top: -5px; position: absolute; border: 3px black solid" src="secuestr0.gif" alt="Secuestro" />
+    </div>
+    <div style="width: 256px; height: 317px; left: 177px; top: 5086px; position: absolute; overflow: hidden">
+      <img style="width: 258px; height: 319px; left: -2px; top: -2px; position: absolute" src="balde.gif" alt="Balde" />
+    </div>
+    <div style="width: 779px; height: 465px; left: 320px; top: 5922px; position: absolute; overflow: hidden">
+      <img style="width: 1074px; height: 473px; left: -146px; top: -4px; position: absolute; border: 3px black solid" src="Gif Auto.gif" alt="Gif Auto" />
+    </div>
+    <div style="width: 464px; height: 621px; left: 479px; top: 6718px; position: absolute; overflow: hidden">
+      <img style="width: 465px; height: 625px; left: -1px; top: -4px; position: absolute" src="final.gif" alt="Final" />
+    </div>
+    <div style="width: 1283px; height: 130px; left: 78px; top: 257px; position: absolute; text-align: center">
+      <span style="color: white; font-size: 64px; font-family: 'Kay Pho Du', sans-serif; font-weight: 700; word-wrap: break-word">brillo</span>
+      <span style="color: white; font-size: 64px; font-family: 'Kay Pho Du', sans-serif; font-weight: 400; word-wrap: break-word"> profundo</span>
+    </div>
+  </div>
 </body>
 </html>
