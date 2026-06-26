@@ -1,91 +1,74 @@
-import balde1 from "./balde-1.png";
-import charla1 from "./charla-1.png";
-import final1 from "./final-1.png";
-import gifAuto1 from "./gif-auto-1.png";
 import limpiando1 from "./limpiando-1.png";
-import mano1 from "./mano-1.png";
-import ojo1 from "./ojo-1.png";
-import oreja1 from "./oreja-1.png";
-import principioFabrica1 from "./principio-fabrica-1.png";
-import secuestr01 from "./secuestr0-1.png";
 
-const imageItems = [
+const sceneImages = [
   {
-    src: secuestr01,
-    alt: "Secuestr",
+    id: "factory",
     className:
-      "absolute top-[3701px] left-[calc(50.00%_-_478px)] w-[955px] h-[716px] aspect-[1.33] object-cover",
+      "absolute top-[570px] left-[calc(50.00%_-_390px)] w-[779px] h-[425px] bg-[url(/principio-fabrica-1.png)] bg-[100%_100%]",
   },
   {
-    src: gifAuto1,
-    alt: "Gif auto",
+    id: "ear",
     className:
-      "absolute top-[5144px] left-[calc(50.00%_-_658px)] w-[1316px] h-[579px] aspect-[2.27] object-cover",
+      "absolute top-[1676px] left-48 w-[225px] h-[220px] bg-[url(/oreja-1.png)] bg-[100%_100%]",
   },
   {
-    src: limpiando1,
-    alt: "Limpiando",
+    id: "hand",
     className:
-      "absolute top-[1157px] left-[calc(50.00%_-_661px)] w-[1322px] h-[569px] aspect-[2.34] object-cover",
+      "absolute top-[1753px] left-[480px] w-[492px] h-[545px] bg-[url(/mano-1.png)] bg-[100%_100%]",
   },
   {
-    src: ojo1,
-    alt: "Ojo",
+    id: "eye",
     className:
-      "absolute top-[2310px] left-[1078px] w-[291px] h-[420px] aspect-[0.69] object-contain",
+      "absolute top-[2068px] left-[1022px] w-[227px] h-[333px] bg-[url(/ojo-1.png)] bg-[100%_100%]",
   },
   {
-    src: mano1,
-    alt: "Mano",
+    id: "conversation",
     className:
-      "absolute top-[1921px] left-[calc(50.00%_-_308px)] w-[616px] h-[684px] aspect-[0.9] object-contain",
+      "absolute top-[2911px] left-[330px] w-[776px] h-[589px] bg-[url(/charla-corregido-1.png)] bg-cover bg-[50%_50%]",
   },
   {
-    src: oreja1,
-    alt: "Oreja",
+    id: "kidnap",
     className:
-      "absolute top-[1827px] left-[60px] w-[287px] h-[284px] aspect-[1.01] object-contain",
+      "absolute top-[3994px] left-[calc(50.00%_-_387px)] w-[766px] h-[573px] bg-[url(/secuestr0-1.png)] bg-cover bg-[50%_50%]",
   },
   {
-    src: balde1,
-    alt: "Balde",
+    id: "bucket",
     className:
-      "absolute top-[4596px] left-16 w-[317px] h-[391px] aspect-[0.81] object-contain",
+      "absolute top-[5086px] left-[177px] w-64 h-[317px] bg-[url(/balde-1.png)] bg-[100%_100%]",
   },
   {
-    src: charla1,
-    alt: "Charla",
+    id: "car",
     className:
-      "absolute top-[2833px] left-[calc(50.00%_-_468px)] w-[936px] h-[710px] aspect-[1.32] object-contain",
+      "absolute top-[5922px] left-80 w-[779px] h-[465px] bg-[url(/gif-auto-1.png)] bg-cover bg-[50%_50%]",
   },
   {
-    src: principioFabrica1,
-    alt: "Principio fabrica",
+    id: "final",
     className:
-      "absolute top-[601px] left-[calc(50.00%_-_399px)] w-[797px] h-[456px] aspect-[1.75] object-contain",
-  },
-  {
-    src: final1,
-    alt: "Final",
-    className:
-      "absolute top-[5888px] left-[calc(50.00%_-_244px)] w-[487px] h-[653px] aspect-[0.75] object-contain",
+      "absolute top-[6718px] left-[calc(50.00%_-_241px)] w-[464px] h-[621px] bg-[url(/final-1.png)] bg-[100%_100%]",
   },
 ];
 
 export const Desktop = (): JSX.Element => {
   return (
-    <main className="bg-black w-full min-w-[1440px] min-h-[6763px] relative overflow-x-auto">
-      <h1 className="absolute top-[238px] left-[calc(50.00%_-_642px)] w-[1283px] [font-family:'Kay_Pho_Du-Regular',Helvetica] font-normal text-white text-8xl text-center tracking-[0] leading-[normal]">
-        LIMPIEZA PROFUNDA
+    <main className="bg-black w-full min-w-[1440px] min-h-[7750px] relative overflow-x-auto">
+      <h1 className="absolute top-[257px] left-[calc(50.00%_-_642px)] w-[1283px] [font-family:'Kay_Pho_Du-Bold',Helvetica] font-normal text-white text-[64px] text-center tracking-[0] leading-[normal]">
+        <span className="font-bold">brillo</span>
+        <span className="[font-family:'Kay_Pho_Du-Regular',Helvetica]">
+          {" "}
+          profundo
+        </span>
       </h1>
-      {imageItems.map((image) => (
-        <img
-          key={`${image.alt}-${image.className}`}
-          className={image.className}
-          alt={image.alt}
-          src={image.src}
-        />
+      {sceneImages.map((image) => (
+        <div key={image.id} aria-hidden="true" className={image.className} />
       ))}
+
+      <figure className="absolute top-[1087px] left-[187px] w-[1070px] h-[456px] flex justify-center m-0">
+        <img
+          className="mt-[58px] w-[785px] h-[339px] ml-[-3px] aspect-[2.34] object-cover"
+          alt="Persona limpiando en un espacio interior"
+          src={limpiando1}
+        />
+      </figure>
     </main>
   );
 };
