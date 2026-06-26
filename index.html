@@ -153,9 +153,10 @@
       const container = document.getElementById('figma-container');
       
       const baseWidth = 1440;
-      const baseHeight = 8450; // ¡Actualizado al nuevo height de Figma!
+      const baseHeight = 8450; 
       
-      const currentWidth = window.innerWidth;
+      // document.documentElement.clientWidth ignora el zoom nativo (visual viewport), evitando tirones
+      const currentWidth = document.documentElement.clientWidth || window.innerWidth;
       let scale = currentWidth / baseWidth;
       
       if (scale >= 1) {
@@ -171,13 +172,20 @@
       wrapper.style.height = `${baseHeight * scale}px`;
     }
 
-    window.addEventListener('resize', scaleLayout);
+    // En celulares, hacer pinch-zoom o scroll (esconder barra de URL) dispara 'resize' y rompe la web.
+    // Solo activamos 'resize' dinámico en computadoras.
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (!isMobile) {
+      window.addEventListener('resize', scaleLayout);
+    }
+    
+    // En móviles solo ajustamos el layout si giran el celular
     window.addEventListener('orientationchange', () => {
-      setTimeout(scaleLayout, 100);
+      setTimeout(scaleLayout, 300);
     });
     
     scaleLayout();
-    setTimeout(scaleLayout, 50);
 
     // ----------------------------------------------------
     // MÁQUINA DE ESCRIBIR
