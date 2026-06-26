@@ -21,7 +21,7 @@
       width: 100%;
       position: relative;
       background: black;
-      overflow: hidden;
+      /* Se quitó overflow: hidden para evitar cortes extraños con el zoom extra */
     }
 
     #figma-container {
@@ -159,14 +159,28 @@
       const currentWidth = document.documentElement.clientWidth || window.innerWidth;
       let scale = currentWidth / baseWidth;
       
-      if (scale >= 1) {
+      const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobileDevice) {
+        scale = scale * 1.2; // Aplicamos el 20% extra de zoom solicitado
+      }
+      
+      if (!isMobileDevice && scale >= 1) {
         scale = 1;
         container.style.transform = `scale(1)`;
         const leftMargin = (currentWidth - baseWidth) / 2;
         container.style.left = `${leftMargin}px`;
       } else {
         container.style.transform = `scale(${scale})`;
-        container.style.left = '0px';
+        
+        if (isMobileDevice) {
+          // Centramos el lienzo para que el zoom de 20% no empuje todo hacia la derecha
+          const scaledWidth = baseWidth * scale;
+          const leftOffset = (currentWidth - scaledWidth) / 2;
+          container.style.left = `${leftOffset}px`;
+        } else {
+          container.style.left = '0px';
+        }
       }
       
       wrapper.style.height = `${baseHeight * scale}px`;
