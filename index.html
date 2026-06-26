@@ -18,6 +18,17 @@
       display: flex;
       justify-content: center;
     }
+    
+    /* Animación del cursor parpadeante */
+    .cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -52,7 +63,48 @@
     <div style="width: 327px; height: 462px; left: 556px; top: 6695px; position: absolute; overflow: hidden">
       <img style="width: 358px; height: 482px; left: -15px; top: -10px; position: absolute" src="final.gif" alt="Final" />
     </div>
-    <div style="width: 1283px; height: 130px; left: 78px; top: 257px; position: absolute; text-align: center; color: white; font-size: 64px; font-family: 'Kay Pho Du', sans-serif; font-weight: 700; word-wrap: break-word">#Operación M.O.P.A</div>
+    
+    <!-- Título con efecto de máquina de escribir -->
+    <div style="width: 1283px; height: 130px; left: 78px; top: 257px; position: absolute; text-align: center; color: white; font-size: 64px; font-family: 'Kay Pho Du', sans-serif; font-weight: 700; word-wrap: break-word">
+      <span id="typewriter-text" class="cursor"></span>
+    </div>
   </div>
+
+  <script>
+    const textElement = document.getElementById("typewriter-text");
+    const text = "#Operación M.O.P.A";
+    let isDeleting = false;
+    let textIndex = 0;
+    
+    function typeWriter() {
+      // Velocidad normal de tipeo y borrado
+      let speed = isDeleting ? 100 : 150;
+      
+      // Si terminó de escribir todo el texto, espera antes de borrar
+      if (!isDeleting && textIndex === text.length) {
+        speed = 2500; // Pausa de 2.5 segundos cuando el texto está completo para que se pueda leer bien
+        isDeleting = true;
+      } 
+      // Si terminó de borrar todo el texto, espera antes de escribir de nuevo
+      else if (isDeleting && textIndex === 0) {
+        speed = 1000; // Pausa de 1 segundo antes de empezar a escribir de nuevo
+        isDeleting = false;
+      }
+      
+      // Actualizar el contenido de texto en pantalla
+      textElement.textContent = text.substring(0, textIndex);
+      
+      if (isDeleting) {
+        textIndex--;
+      } else {
+        textIndex++;
+      }
+      
+      setTimeout(typeWriter, speed);
+    }
+    
+    // Iniciar la animación 1 segundo después de que cargue la página
+    setTimeout(typeWriter, 1000);
+  </script>
 </body>
 </html>
