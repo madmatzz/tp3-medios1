@@ -47,6 +47,9 @@
 </head>
 <body>
   
+  <!-- Reproductor oculto de YouTube -->
+  <div id="youtube-audio" style="position: absolute; width: 10px; height: 10px; opacity: 0; pointer-events: none; z-index: -1;"></div>
+
   <div id="figma-wrapper">
     <div id="figma-container">
       
@@ -89,6 +92,46 @@
   </div>
 
   <script>
+    // ----------------------------------------------------
+    // AUDIO DE FONDO (YOUTUBE API)
+    // ----------------------------------------------------
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-audio', {
+        height: '10', // Altura y anchura mínima para que YouTube no lo bloquee
+        width: '10',
+        videoId: 'LhqUpcVHFAI',
+        playerVars: {
+          'autoplay': 1,
+          'loop': 1,
+          'playlist': 'LhqUpcVHFAI',
+          'controls': 0
+        },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+      
+      // Los navegadores bloquean el audio automático. Reproducir al primer toque/clic
+      const playAudio = () => {
+        if (player && typeof player.getPlayerState === 'function' && player.getPlayerState() !== YT.PlayerState.PLAYING) {
+          player.playVideo();
+        }
+      };
+      
+      document.body.addEventListener('click', playAudio);
+      document.body.addEventListener('touchstart', playAudio);
+    }
+
     // ----------------------------------------------------
     // LÓGICA DE ESCALADO RESPONSIVO MEJORADA PARA MOBILE
     // ----------------------------------------------------
